@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PK-Team-Builder", "PK-Team-Builder\PK-Team-Builder.csproj", "{87D8FEBB-32B3-4EF4-9AD7-B449394F3605}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87D8FEBB-32B3-4EF4-9AD7-B449394F3605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D8FEBB-32B3-4EF4-9AD7-B449394F3605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D8FEBB-32B3-4EF4-9AD7-B449394F3605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D8FEBB-32B3-4EF4-9AD7-B449394F3605}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EBE9B77-3349-43B4-934C-712CAA76893D}
+	EndGlobalSection
+EndGlobal
