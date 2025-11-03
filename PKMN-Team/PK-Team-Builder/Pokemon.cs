@@ -38,6 +38,7 @@ namespace PK_Team_Builder
         protected int baseSpeed;
 
         protected Natures nature;
+        protected Natures statNature;
 
         // TODO: Determine whether to declare moveset here or in each species' class
     }

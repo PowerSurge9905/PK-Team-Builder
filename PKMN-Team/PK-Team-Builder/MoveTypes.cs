@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PK_Team_Builder
 {
-    internal enum Moves
+    internal enum MoveTypes
     {
-        // Placeholder for moves enum
+        Physical,
+        Special,
+        Status
     }
 }
