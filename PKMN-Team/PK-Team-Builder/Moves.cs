@@ -8,14 +8,14 @@ namespace PK_Team_Builder
 {
     internal class Moves
     {
-        private int id;
-        private string name;
-        private Types type;
-        private MoveCategories category;
-        private int powerPoints;
-        private int power;
-        private int accuracy;
-        private bool hasExtraEffect;
+        public int id { get; }
+        public string name { get; }
+        public Types type { get; }
+        public MoveCategories category { get; }
+        public int powerPoints { get; }
+        public int power { get; }
+        public int accuracy { get; }
+        public bool hasExtraEffect { get; }
 
         public Moves(int id, string name, Types type, MoveCategories category, int pp, int power, int accuracy, bool hasExtraEffect)
         {

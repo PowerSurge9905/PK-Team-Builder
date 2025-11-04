@@ -217,5 +217,33 @@ namespace PK_Team_Builder
                     throw new ArgumentException("Invalid nature for stat modifier calculation!");
             }
         }
+
+        public static decimal GetTypeEffectiveness(Moves move, Types defending)
+        {
+            // Attacking type is the row, defending type is the column
+            decimal[,] matchupChart = {
+              // NOR FIR WAT ELE GRA ICE FIG POI GRO FLY PSY BUG ROC GHO DRA DAR STE FAI NON
+         /*NOR*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  .5m,0,  1,  1,  .5m,1,  1  },
+         /*FIR*/{1,  .5m,.5m,1,  2,  2,  1,  1,  1,  1,  1,  2,  .5m,1,  .5m,1,  2,  1,  1  },
+         /*WAT*/{1,  2,  .5m,1,  .5m,1,  1,  1,  2,  1,  1,  1,  2,  1,  .5m,1,  1,  1,  1  },
+         /*ELE*/{1,  1,  2,  .5m,.5m,1,  1,  1,  0,  2,  1,  1,  1,  1,  .5m,1,  1,  1,  1  },
+         /*GRA*/{1,  .5m,2,  1,  .5m,1,  1,  .5m,2,  .5m,1,  .5m,2,  1,  .5m,1,  .5m,1,  1  },
+         /*ICE*/{1,  .5m,.5m,1,  2,  .5m,1,  1,  2,  2,  1,  1,  1,  1,  2,  1,  .5m,1,  1  },
+         /*FIG*/{2,  1,  1,  1,  1,  2,  1,  .5m,1,  .5m,.5m,.5m,2,  0,  1,  2,  2,  .5m,1  },
+         /*POI*/{1,  1,  1,  1,  2,  1,  1,  .5m,.5m,1,  1,  1,  .5m,.5m,1,  1,  0,  2,  1  },
+         /*GRO*/{1,  2,  1,  2,  .5m,1,  1,  2,  1,  0,  1,  .5m,2,  1,  1,  1,  2,  1,  1  },
+         /*FLY*/{1,  1,  1,  .5m,2,  1,  2,  1,  1,  1,  1,  2,  .5m,1,  1,  1,  .5m,1,  1  },
+         /*PSY*/{1,  1,  1,  1,  1,  1,  2,  2,  1,  1,  .5m,1,  1,  1,  1,  0,  .5m,1,  1  },
+         /*BUG*/{1,  .5m,1,  1,  2,  1,  .5m,.5m,1,  .5m,2,  1,  1,  .5m,1,  2,  .5m,.5m,1  },
+         /*ROC*/{1,  2,  1,  1,  1,  2,  .5m,1,  .5m,2,  1,  2,  1,  1,  1,  1,  .5m,1,  1  },
+         /*GHO*/{0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  1,  1  },
+         /*DRA*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  .5m,0,  1  },
+         /*DAR*/{1,  1,  1,  1,  1,  1,  .5m,1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  .5m,1  },
+         /*STE*/{1,  .5m,.5m,.5m,1,  2,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  .5m,2,  1  },
+         /*FAI*/{1,  .5m,1,  1,  1,  1,  2,  .5m,1,  1,  1,  1,  1,  1,  2,  2,  .5m,1,  1  },
+         /*NON*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1  }
+            };
+            return matchupChart[(int)move.type, (int)defending];
+        }
     }
 }
