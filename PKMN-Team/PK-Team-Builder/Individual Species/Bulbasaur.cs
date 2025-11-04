@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PK_Team_Builder
+namespace PK_Team_Builder.Pokemon_Classes
 {
-    internal enum Species
+    internal class Bulbasaur
     {
-        // Placeholder for species enum
     }
 }

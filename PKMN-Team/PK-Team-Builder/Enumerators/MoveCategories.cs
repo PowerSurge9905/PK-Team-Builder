@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PK_Team_Builder
 {
-    internal enum MoveTypes
+    internal enum MoveCategories
     {
         Physical,
         Special,
-        Status
+        Status,
+        ZMove,
+        GMax
     }
 }

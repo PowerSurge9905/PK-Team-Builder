@@ -8,6 +8,7 @@ namespace PK_Team_Builder
 {
     internal enum Abilities
     {
+        None, // Default, should not be actually used
         Stench, // May cause the target to flinch
         Drizzle, // Summons rain upon entering battle
         SpeedBoost, // Increases Speed stat each turn
@@ -38,6 +39,10 @@ namespace PK_Team_Builder
         Synchronize, // Passes burn, paralysis, or poison to the attacker that inflicted it
         ClearBody, // Prevents stat reduction by others
         NaturalCure, // Heals status conditions upon switching out
-        LightningRod // Draws in all Electric-type moves to boost Special Attack
+        LightningRod, // Draws in all Electric-type moves to boost Special Attack
+        SereneGrace, // Increases the chance of secondary effects occurring
+        SwiftSwim, // Boosts Speed in rain
+        Chlorophyll, // Boosts Speed in sunlight
+        Overgrow, // Powers up Grass-type moves in a pinch [MOVE LATER - SUPPOSED TO BE #65]
     }
 }

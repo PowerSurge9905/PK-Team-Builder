@@ -8,6 +8,7 @@ namespace PK_Team_Builder
 {
     internal enum Types
     {
+        None,
         Normal,
         Fire,
         Water,
@@ -25,6 +26,7 @@ namespace PK_Team_Builder
         Dragon,
         Dark,
         Steel,
-        Fairy
+        Fairy,
+        Stellar
     }
 }
