@@ -29,6 +29,9 @@ namespace PK_Team_Builder
             this.hasExtraEffect = hasExtraEffect;
         }
 
+        // Placeholder move
+        public static readonly Moves empty = new(0, "Empty", Types.None, MoveCategories.Status, 0, 0, 0, false);
+        // Actual moves
         public static readonly Moves Pound = new(1, "Pound", Types.Normal, MoveCategories.Physical, 35, 40, 100, false);
         public static readonly Moves KarateChop = new(2, "Karate Chop", Types.Fighting, MoveCategories.Physical, 25, 50, 100, true); // High critical hit ratio
     }

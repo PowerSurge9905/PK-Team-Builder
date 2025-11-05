@@ -15,65 +15,71 @@ namespace PK_Team_Builder
 
         // Species and Base Stats
         // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
+        // Just use baseSpAtk for Gen 1 and 2 calculations
+        protected int natDexNumber { get; set; } = 0;
         protected Species species;
-        protected int baseHP = 0;
-        protected int baseAtk = 0;
-        protected int baseDef = 0;
-        protected int baseSpAtk = 0;
-        protected int baseSpDef = 0;
-        protected int baseSpeed = 0;
+        protected int baseHP { get; set; } = 0;
+        protected int baseAtk { get; set; } = 0;
+        protected int baseDef { get; set; } = 0;
+        protected int baseSpAtk { get; set; } = 0;
+        protected int baseSpDef { get; set; } = 0;
+        protected int baseSpeed { get; set; } = 0;
 
         // Individual Values (IVs)
         // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
-        protected int hpIV = 0;
-        protected int atkIV = 0;
-        protected int defIV = 0;
-        protected int spAtkIV = 0;
-        protected int spDefIV = 0;
-        protected int speedIV = 0;
+        // Just use spAtkIV for Gen 1 and 2 calculations
+        protected int hpIV { get; set; } = 0;
+        protected int atkIV { get; set; } = 0;
+        protected int defIV { get; set; } = 0;
+        protected int spAtkIV { get; set; } = 0;
+        protected int spDefIV { get; set; } = 0;
+        protected int speedIV { get; set; } = 0;
 
         // Effort Values (EVs)
         // Max EVs in Gen 1 and 2 is 65535 per stat, maxing out at 327675 total
         // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
-        protected int hpEV = 0;
-        protected int atkEV = 0;
-        protected int defEV = 0;
-        protected int spAtkEV = 0;
-        protected int spDefEV = 0;
-        protected int speedEV = 0;
+        // Just use spAtkEV for Gen 1 and 2 calculations
+        protected int hpEV { get; set; } = 0;
+        protected int atkEV { get; set; } = 0;
+        protected int defEV { get; set; } = 0;
+        protected int spAtkEV { get; set; } = 0;
+        protected int spDefEV { get; set; } = 0;
+        protected int speedEV { get; set; } = 0;
         // Use 65535 and ignore overall max if the user is calculating Gen 1 or 2 stats
-        public const int maxEVPerStat = 255;
+        public int maxEVPerStat = 255;
         public const int maxEV = 510;
 
-        protected Types[] types = [Types.None, Types.None];
+        protected int dynamaxLevel { get; set; } = 0;
+        public const int maxDynamaxLevel = 10;
 
-        protected Types teraType = Types.None;
+        protected Types[] types { get; set; } = { Types.None, Types.None };
 
-        protected Natures nature = Natures.Hardy;
-        protected Natures statNature = Natures.Hardy;
+        protected Types teraType { get; set; } = Types.None;
 
-        protected int level = 1;
-        protected int maxLevel = 100;
-        protected int currentHP = 0;
+        protected Natures nature { get; set; } = Natures.Hardy;
+        protected Natures statNature { get; set; } = Natures.Hardy;
 
-        protected Genders gender = Genders.Unknown;
+        protected int level { get; set; } = 1;
+        protected const int maxLevel = 100;
+        protected int currentHP { get; set; } = 0;
 
-        protected bool isNicknamed = false;
-        protected string nickname = "";
+        protected Genders gender { get; set; } = Genders.Unknown;
 
-        protected bool isShiny = false;
+        protected bool isNicknamed { get; set; } = false;
+        protected string nickname { get; set; } = "";
 
-        protected Abilities[] possibleAbilities = {Abilities.None, Abilities.None, Abilities.None};
-        protected Abilities ability = Abilities.None;
+        protected bool isShiny { get; set; } = false;
+
+        protected Abilities[] possibleAbilities { get; set; } = { Abilities.None, Abilities.None, Abilities.None };
+        protected Abilities ability { get; set; } = Abilities.None;
 
         protected HeldItems heldItem = HeldItems.None;
-        // Moveset - Current Moves
-        // Moveset - Level up & evolution
-        // Moveset - TMs/HMs
-        // Moveset - Move Tutor
-        // Moveset - Egg Moves
 
-        // TODO: Determine whether to declare moveset here or in each species' class
+        protected Moves[] currentMoves { get; set; }
+        protected Dictionary<int, Moves> levelUpMovePool { get; set; }
+        protected Dictionary<int, Moves> TMMovePool { get; set; }
+        protected List<Moves> moveTutorPool { get; set; }
+        protected List<Moves> eggMovePool { get; set; }
 
         // Abstract methods for calculating HP and other stats (Gen 1 & 2)
         public int CalculateHPOld()
@@ -157,6 +163,7 @@ namespace PK_Team_Builder
             return (int)Math.Floor((((2 * baseStat + IV + (EV / 4)) * level / 100) + 5) * GetNatureModifier(stat));
         }
 
+        // Get nature modifier for a given stat
         public decimal GetNatureModifier(Stats stat)
         {
             switch(statNature)
@@ -222,28 +229,30 @@ namespace PK_Team_Builder
         {
             // Attacking type is the row, defending type is the column
             decimal[,] matchupChart = {
-              // NOR FIR WAT ELE GRA ICE FIG POI GRO FLY PSY BUG ROC GHO DRA DAR STE FAI NON
-         /*NOR*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  .5m,0,  1,  1,  .5m,1,  1  },
-         /*FIR*/{1,  .5m,.5m,1,  2,  2,  1,  1,  1,  1,  1,  2,  .5m,1,  .5m,1,  2,  1,  1  },
-         /*WAT*/{1,  2,  .5m,1,  .5m,1,  1,  1,  2,  1,  1,  1,  2,  1,  .5m,1,  1,  1,  1  },
-         /*ELE*/{1,  1,  2,  .5m,.5m,1,  1,  1,  0,  2,  1,  1,  1,  1,  .5m,1,  1,  1,  1  },
-         /*GRA*/{1,  .5m,2,  1,  .5m,1,  1,  .5m,2,  .5m,1,  .5m,2,  1,  .5m,1,  .5m,1,  1  },
-         /*ICE*/{1,  .5m,.5m,1,  2,  .5m,1,  1,  2,  2,  1,  1,  1,  1,  2,  1,  .5m,1,  1  },
-         /*FIG*/{2,  1,  1,  1,  1,  2,  1,  .5m,1,  .5m,.5m,.5m,2,  0,  1,  2,  2,  .5m,1  },
-         /*POI*/{1,  1,  1,  1,  2,  1,  1,  .5m,.5m,1,  1,  1,  .5m,.5m,1,  1,  0,  2,  1  },
-         /*GRO*/{1,  2,  1,  2,  .5m,1,  1,  2,  1,  0,  1,  .5m,2,  1,  1,  1,  2,  1,  1  },
-         /*FLY*/{1,  1,  1,  .5m,2,  1,  2,  1,  1,  1,  1,  2,  .5m,1,  1,  1,  .5m,1,  1  },
-         /*PSY*/{1,  1,  1,  1,  1,  1,  2,  2,  1,  1,  .5m,1,  1,  1,  1,  0,  .5m,1,  1  },
-         /*BUG*/{1,  .5m,1,  1,  2,  1,  .5m,.5m,1,  .5m,2,  1,  1,  .5m,1,  2,  .5m,.5m,1  },
-         /*ROC*/{1,  2,  1,  1,  1,  2,  .5m,1,  .5m,2,  1,  2,  1,  1,  1,  1,  .5m,1,  1  },
-         /*GHO*/{0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  1,  1  },
-         /*DRA*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  .5m,0,  1  },
-         /*DAR*/{1,  1,  1,  1,  1,  1,  .5m,1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  .5m,1  },
-         /*STE*/{1,  .5m,.5m,.5m,1,  2,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  .5m,2,  1  },
-         /*FAI*/{1,  .5m,1,  1,  1,  1,  2,  .5m,1,  1,  1,  1,  1,  1,  2,  2,  .5m,1,  1  },
-         /*NON*/{1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1  }
+               //NOR FIR WAT ELE GRA ICE FIG POI GRO FLY PSY BUG ROC GHO DRA DAR STE FAI NON
+                {1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  .5m,0,  1,  1,  .5m,1,  1  }, /*NOR*/
+                {1,  .5m,.5m,1,  2,  2,  1,  1,  1,  1,  1,  2,  .5m,1,  .5m,1,  2,  1,  1  }, /*FIR*/
+                {1,  2,  .5m,1,  .5m,1,  1,  1,  2,  1,  1,  1,  2,  1,  .5m,1,  1,  1,  1  }, /*WAT*/
+                {1,  1,  2,  .5m,.5m,1,  1,  1,  0,  2,  1,  1,  1,  1,  .5m,1,  1,  1,  1  }, /*ELE*/
+                {1,  .5m,2,  1,  .5m,1,  1,  .5m,2,  .5m,1,  .5m,2,  1,  .5m,1,  .5m,1,  1  }, /*GRA*/
+                {1,  .5m,.5m,1,  2,  .5m,1,  1,  2,  2,  1,  1,  1,  1,  2,  1,  .5m,1,  1  }, /*ICE*/
+                {2,  1,  1,  1,  1,  2,  1,  .5m,1,  .5m,.5m,.5m,2,  0,  1,  2,  2,  .5m,1  }, /*FIG*/
+                {1,  1,  1,  1,  2,  1,  1,  .5m,.5m,1,  1,  1,  .5m,.5m,1,  1,  0,  2,  1  }, /*POI*/
+                {1,  2,  1,  2,  .5m,1,  1,  2,  1,  0,  1,  .5m,2,  1,  1,  1,  2,  1,  1  }, /*GRO*/
+                {1,  1,  1,  .5m,2,  1,  2,  1,  1,  1,  1,  2,  .5m,1,  1,  1,  .5m,1,  1  }, /*FLY*/
+                {1,  1,  1,  1,  1,  1,  2,  2,  1,  1,  .5m,1,  1,  1,  1,  0,  .5m,1,  1  }, /*PSY*/
+                {1,  .5m,1,  1,  2,  1,  .5m,.5m,1,  .5m,2,  1,  1,  .5m,1,  2,  .5m,.5m,1  }, /*BUG*/
+                {1,  2,  1,  1,  1,  2,  .5m,1,  .5m,2,  1,  2,  1,  1,  1,  1,  .5m,1,  1  }, /*ROC*/
+                {0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  1,  1  }, /*GHO*/
+                {1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  .5m,0,  1  }, /*DRA*/
+                {1,  1,  1,  1,  1,  1,  .5m,1,  1,  1,  2,  1,  1,  2,  1,  .5m,1,  .5m,1  }, /*DAR*/
+                {1,  .5m,.5m,.5m,1,  2,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  .5m,2,  1  }, /*STE*/
+                {1,  .5m,1,  1,  1,  1,  2,  .5m,1,  1,  1,  1,  1,  1,  2,  2,  .5m,1,  1  }, /*FAI*/
+                {1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1  }  /*NON*/
             };
             return matchupChart[(int)move.type, (int)defending];
         }
+
+        private void InitializeBaseStats(Species species) { }
     }
 }
