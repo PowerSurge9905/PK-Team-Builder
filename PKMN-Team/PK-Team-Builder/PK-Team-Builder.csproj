@@ -10,4 +10,9 @@
     <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Individual Species\004 - 006 Charmander Line\" />
+    <Folder Include="Individual Species\007 - 009 Squirtle Line\" />
+  </ItemGroup>
+
 </Project>

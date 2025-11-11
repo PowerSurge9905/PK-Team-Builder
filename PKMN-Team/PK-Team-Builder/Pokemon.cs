@@ -1,4 +1,5 @@
 ﻿using PK_Team_Builder.Enumerators;
+using PK_Team_Builder.Enumerators.Lookups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +15,16 @@ namespace PK_Team_Builder
         }
 
         // Species and Base Stats
-        // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
-        // Just use baseSpAtk for Gen 1 and 2 calculations
         protected int natDexNumber { get; set; } = 0;
         protected Species species;
-        protected int baseHP { get; set; } = 0;
-        protected int baseAtk { get; set; } = 0;
-        protected int baseDef { get; set; } = 0;
-        protected int baseSpAtk { get; set; } = 0;
-        protected int baseSpDef { get; set; } = 0;
-        protected int baseSpeed { get; set; } = 0;
+        protected int baseHP { get; set; }
+        protected int baseAtk { get; set; }
+        protected int baseDef { get; set; }
+        protected int baseSpAtk { get; set; }
+        protected int baseSpDef { get; set; }
+        protected int baseSpeed { get; set; }
 
         // Individual Values (IVs)
-        // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
-        // Just use spAtkIV for Gen 1 and 2 calculations
         protected int hpIV { get; set; } = 0;
         protected int atkIV { get; set; } = 0;
         protected int defIV { get; set; } = 0;
@@ -36,23 +33,19 @@ namespace PK_Team_Builder
         protected int speedIV { get; set; } = 0;
 
         // Effort Values (EVs)
-        // Max EVs in Gen 1 and 2 is 65535 per stat, maxing out at 327675 total
-        // Remember: Spe. Atk and Def are one stat - SPECIAL - in Gen 1 and 2
-        // Just use spAtkEV for Gen 1 and 2 calculations
         protected int hpEV { get; set; } = 0;
         protected int atkEV { get; set; } = 0;
         protected int defEV { get; set; } = 0;
         protected int spAtkEV { get; set; } = 0;
         protected int spDefEV { get; set; } = 0;
         protected int speedEV { get; set; } = 0;
-        // Use 65535 and ignore overall max if the user is calculating Gen 1 or 2 stats
         public int maxEVPerStat = 255;
         public const int maxEV = 510;
 
         protected int dynamaxLevel { get; set; } = 0;
         public const int maxDynamaxLevel = 10;
 
-        protected Types[] types { get; set; } = { Types.None, Types.None };
+        protected Types[] types { get; set; } = {Types.None,Types.None};
 
         protected Types teraType { get; set; } = Types.None;
 
@@ -62,7 +55,8 @@ namespace PK_Team_Builder
         protected int level { get; set; } = 1;
         protected const int maxLevel = 100;
         protected int currentHP { get; set; } = 0;
-
+        protected int maxHP { get; set; } = 0;
+        protected Genders[] possibleGenders { get; set; } = { Genders.Unknown };
         protected Genders gender { get; set; } = Genders.Unknown;
 
         protected bool isNicknamed { get; set; } = false;
@@ -75,13 +69,14 @@ namespace PK_Team_Builder
 
         protected HeldItems heldItem = HeldItems.None;
 
-        protected Moves[] currentMoves { get; set; }
+        protected Moves[] currentMoves { get; set; } = { Moves.empty, Moves.empty, Moves.empty, Moves.empty };
         protected Dictionary<int, Moves> levelUpMovePool { get; set; }
-        protected Dictionary<int, Moves> TMMovePool { get; set; }
+        protected List<Moves> TMMovePool { get; set; }
         protected List<Moves> moveTutorPool { get; set; }
         protected List<Moves> eggMovePool { get; set; }
 
         // Abstract methods for calculating HP and other stats (Gen 1 & 2)
+        // Decide on whether to keep these, not sure if I want to include old calculations
         public int CalculateHPOld()
         {
             return (int)(Math.Floor((((baseHP + hpIV) * 2 + Math.Floor(Math.Ceiling(Math.Sqrt(hpEV)) / 4)) * level) / 100) + level + 10);
@@ -253,6 +248,36 @@ namespace PK_Team_Builder
             return matchupChart[(int)move.type, (int)defending];
         }
 
-        private void InitializeBaseStats(Species species) { }
+        public void InitializePokemon(Species species)
+        {
+            this.species = species;
+            InitializeBaseStats(species);
+            InitializeTypes(species);
+            InitializeAbilities(species);
+        }
+
+        protected void InitializeBaseStats(Species species)
+        {
+            this.baseHP = BaseStatsLookup.baseStatsLookup[species][0];
+            this.baseAtk = BaseStatsLookup.baseStatsLookup[species][1];
+            this.baseDef = BaseStatsLookup.baseStatsLookup[species][2];
+            this.baseSpAtk = BaseStatsLookup.baseStatsLookup[species][3];
+            this.baseSpDef = BaseStatsLookup.baseStatsLookup[species][4];
+            this.baseSpeed = BaseStatsLookup.baseStatsLookup[species][5];
+            this.maxHP = CalculateHP();
+            this.currentHP = this.maxHP;
+        }
+
+        protected void InitializeTypes(Species species)
+        {
+            this.types = TypesLookup.typesLookup[species];
+            this.teraType = this.types[0];
+        }
+
+        protected void InitializeAbilities(Species species)
+        {
+            this.possibleAbilities = AbilitiesLookup.abilitiesLookup[species];
+            this.ability = this.possibleAbilities[0];
+        }
     }
 }

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace PK_Team_Builder.Enumerators
 {
-    internal enum MoveCategories
+    internal enum SpecialMoveCategories
     {
-        Physical,
-        Special,
-        Status,
-        ZMove,
-        GMax
+        None,
+        Sound,
+        Punch,
+        Recoil
     }
 }

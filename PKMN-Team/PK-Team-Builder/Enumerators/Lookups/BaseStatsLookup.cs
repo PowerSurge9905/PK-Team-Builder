@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PK_Team_Builder.Enumerators
+namespace PK_Team_Builder.Enumerators.Lookups
 {
-    internal class BaseStats
+    internal class BaseStatsLookup
     {
         public static Dictionary<Species, int[]> baseStatsLookup = new Dictionary<Species, int[]>()
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PK_Team_Builder
+namespace PK_Team_Builder.Enumerators
 {
     internal enum Species
     {
