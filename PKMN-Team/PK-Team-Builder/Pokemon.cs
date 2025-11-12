@@ -58,7 +58,7 @@ namespace PK_Team_Builder
         protected int maxHP { get; set; } = 0;
         protected Genders[] possibleGenders { get; set; } = { Genders.Unknown };
         protected Genders gender { get; set; } = Genders.Unknown;
-
+        protected decimal weight { get; set; } = 0;
         protected bool isNicknamed { get; set; } = false;
         protected string nickname { get; set; } = "";
 

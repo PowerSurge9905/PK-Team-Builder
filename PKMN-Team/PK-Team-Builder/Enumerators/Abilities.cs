@@ -135,5 +135,75 @@ namespace PK_Team_Builder.Enumerators
         FlowerGift, // Boosts it's and allies' Attack and Special Defense in Harsh Sunlight
         BadDreams, // Damages opponents that are Asleep
         // Generation 5
+        Pickpocket, // Steals held item from attackers that make contact
+        SheerForce, // Removes additional effects from moves, but increases the moves' power
+        Contrary, // Reverses stat changes
+        Unnerve, // Opponents are unable to eat berries
+        Defiant, // Boosts Attack if an opponent lowers any of its stats
+        Defeatist, // Halves the Pokémon's Attack and Special Attack when its HP drops to half or less
+        CursedBody, // May disable a move that has damaged the Pokémon
+        Healer, // Sometimes cures allies' status conditions
+        FriendGuard, // Reduces damage dealt to allies
+        WeakArmor, // When hit by a physical move, reduces Defense and sharply boosts Speed
+        HeavyMetal, // Doubles the Pokémon's weight
+        LightMetal, // Halves the Pokémon's weight
+        Multiscale, // Reduces damage recieved when the Pokémon is at full HP
+        ToxicBoost, // Powers up physical moves when the Pokémon is Poisoned
+        FlareBoost, // Powers up special moves when the Pokémon is Burned
+        Harvest, // May create another berry after one is used
+        Telepathy, // The Pokémon can anticipate and dodge attacks from its allies
+        Moody, // Every turn, one stat will be sharply boosted, but another stat will be lowered
+        Overcoat, // The Pokémon takes no damage from Sandstorms and is unaffected by powders and spores
+        PoisonTouch, // May poison the target on contact
+        Regenerator, // Restores a little HP when withdrawn from battle
+        BigPecks, // Prevents the Pokémon's Defense from being lowered
+        SandRush, // Boosts the Pokémon's Speed in a Sandstorm
+        WonderSkin, // Status moves are more likely to miss the Pokémon
+        Analytic, // Boosts the power of the Pokémon's move it is the last to act that turn
+        Illusion, // The Pokémon enters battle disguised as the last Pokémon in the player's party
+        Imposter, // The Pokémon transforms itself into the Pokémon it's facing
+        Infiltrator, // The Pokémon's moves are unaffected by the target's barriers, substitutes, etc.
+        Mummy, // Contact with the Pokémon changes the attacker's Ability to Mummy
+        Moxie, // Boosts the Pokémon's Attack when it KOs a target
+        Justified, // Boosts the Pokémon's Attack when it's hit by a Dark-type move
+        Rattled, // Boosts the Pokémon's Speed when it's hit by a Dark-, Ghost-, or Bug-type move or when Intimidated
+        MagicBounce, // Reflects status moves back at the attacker
+        SapSipper, // Boosts the Pokémon's Attack when hit by Grass-type moves, takes no damage from them
+        Prankster, // Gives priority to the Pokémon's status moves
+        SandForce, // Boosts the power of Rock-, Ground-, and Steel-type moves in a Sandstorm
+        IronBarbs, // Damages attackers that make contact
+        ZenMode, // Changes the Pokémon to Zen mode when its HP is half or less
+        VictoryStar, // Boosts the accuracy of the Pokémon and its allies
+        Turboblaze, // The Pokémon's moves are unimpeded by the Ability of the target
+        Teravolt, // The Pokémon's moves are unimpeded by the Ability of the target
+        // Generation 6
+        AromaVeil, // Protects the Pokémon and its allies from effects that prevent the use of moves
+        FlowerVeil, // Ally Grass-type Pokémon are protected from status conditions and stat lowerings
+        CheekPouch, // The Pokémon's HP is restored when it eats a berry, in addition the berry's regular effects
+        Protean, // Once per entry/switch-in, the Pokémon changes its type to the type of the move it's about to use
+        FurCoat, // Halves damage taken from physical moves
+        Magician, // Steals the target's held item on hitting it with a move
+        Bulletproof, // Protects the Pokémon from ball and bomb moves
+        Competitive, // Boosts the Pokémon's Special Attack sharply when any stat is lowered by an opponent
+        StrongJaw, // Boosts the power of biting moves
+        Refrigerate, // Normal-type moves become Ice-type, these moves get boosted
+        SweetVeil, // Prevents the Pokémon and its allies from falling asleep
+        StanceChange, // The Pokémon changes to Blade Forme when using an attacking move, and Shield Forme when using King's Shield
+        GaleWings, // Gives priority to the Pokémon's Flying-type moves when its HP is full
+        MegaLauncher, // Powers up pulse moves
+        GrassPelt, // Boosts the Pokémon's Defense on Grassy Terrain
+        Symbiosis, // The Pokémon passes its held item to an ally that has used up an item
+        ToughClaws, // Powers up contact moves
+        Pixilate, // Normal-type moves become Fairy-type, these moves get boosted
+        Gooey, // Contact with the Pokémon lowers the attacker's Speed
+        Aerilate, // Normal-type moves become Flying-type, these moves get boosted
+        ParentalBond, // The parent and child attack one after the other
+        DarkAura, // Powers up Dark-type moves used by any Pokémon on the field
+        FairyAura, // Powers up Fairy-type moves used by any Pokémon on the field
+        AuraBreak, // The effects of "Aura" Abilities are reversed to lower the power of affected moves
+        PrimordialSea, // The Pokémon changes the weather to nullify Fire-type moves
+        DesolateLand, // The Pokémon changes the weather to nullify Water-type moves
+        DeltaStream, // The Pokémon changes the weather so that no moves are supereffective against the Flying-type
+        // Generation 7
     }
 }

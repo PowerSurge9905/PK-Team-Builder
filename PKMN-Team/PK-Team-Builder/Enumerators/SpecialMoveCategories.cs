@@ -11,6 +11,15 @@ namespace PK_Team_Builder.Enumerators
         None,
         Sound,
         Punch,
-        Recoil
+        Recoil,
+        Powder,
+        Spore,
+        Ball,
+        Bomb,
+        Bite,
+        Pulse
     }
+
+    // Instead of using an enum, try making multiple lists of the special move types
+    // I.E. Aura Sphere is both a "Ball" and "Pulse" move, so have it be in both lists
 }

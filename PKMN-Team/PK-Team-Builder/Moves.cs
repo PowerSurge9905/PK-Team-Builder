@@ -13,6 +13,8 @@ namespace PK_Team_Builder
         public string name { get; }
         public Types type { get; }
         public MoveCategories category { get; }
+        // Instead of using an enum, try making multiple lists of the special move types
+        // I.E. Aura Sphere is both a "Ball" and "Pulse" move, so have it be in both lists
         public SpecialMoveCategories specialCategory { get; }
         public int powerPoints { get; }
         public int power { get; }
