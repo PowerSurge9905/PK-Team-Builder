@@ -9,37 +9,30 @@ namespace PK_Team_Builder
 {
     internal class Moves
     {
-        public int id { get; }
         public string name { get; }
         public Types type { get; }
         public MoveCategories category { get; }
-        // Instead of using an enum, try making multiple lists of the special move types
-        // I.E. Aura Sphere is both a "Ball" and "Pulse" move, so have it be in both lists
-        public SpecialMoveCategories specialCategory { get; }
-        public int powerPoints { get; }
+        public int pp { get; }
         public int power { get; }
         public int accuracy { get; }
         public bool contact { get; }
-        public bool hasExtraEffect { get; }
 
-        public Moves(int id, string name, Types type, MoveCategories category, SpecialMoveCategories specialCategory, int pp, int power, int accuracy, bool contact, bool hasExtraEffect)
+        public Moves(string name, Types type, MoveCategories category, int pp, int power, int accuracy, bool contact)
         {
-            this.id = id;
             this.name = name;
             this.type = type;
             this.category = category;
-            this.specialCategory = specialCategory;
-            this.powerPoints = pp;
+            this.pp = pp;
             this.power = power;
             this.accuracy = accuracy;
             this.contact = contact;
-            this.hasExtraEffect = hasExtraEffect;
         }
 
         // Placeholder move
-        public static readonly Moves empty = new(0, "Empty", Types.None, MoveCategories.Status, SpecialMoveCategories.None, 0, 0, 0, false, false);
-        // Actual moves
-        public static readonly Moves Pound = new(1, "Pound", Types.Normal, MoveCategories.Physical, SpecialMoveCategories.None, 35, 40, 100, true, false);
-        public static readonly Moves KarateChop = new(2, "Karate Chop", Types.Fighting, MoveCategories.Physical, SpecialMoveCategories.None, 25, 50, 100, true, true); // High critical hit ratio
+        public static readonly Moves empty = new("Empty", Types.None, MoveCategories.Status, 0, 0, 0, false);
+        // Regular Moves
+        // Generation 1
+        public static readonly Moves Pound = new("Pound", Types.Normal, MoveCategories.Physical, 35, 40, 100, true);
+        public static readonly Moves KarateChop = new("Karate Chop", Types.Fighting, MoveCategories.Physical, 25, 50, 100, true); // High critical hit ratio
     }
 }
