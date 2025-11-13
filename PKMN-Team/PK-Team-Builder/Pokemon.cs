@@ -75,46 +75,7 @@ namespace PK_Team_Builder
         protected List<Moves> moveTutorPool { get; set; }
         protected List<Moves> eggMovePool { get; set; }
 
-        // Abstract methods for calculating HP and other stats (Gen 1 & 2)
-        // Decide on whether to keep these, not sure if I want to include old calculations
-        public int CalculateHPOld()
-        {
-            return (int)(Math.Floor((((baseHP + hpIV) * 2 + Math.Floor(Math.Ceiling(Math.Sqrt(hpEV)) / 4)) * level) / 100) + level + 10);
-        }
-        public int CalculateStatsOld(Stats stat)
-        {
-            int baseStat = 0;
-            int IV = 0;
-            int EV = 0;
-            switch (stat)
-            {
-                case Stats.Attack:
-                    baseStat = baseAtk;
-                    IV = atkIV;
-                    EV = atkEV;
-                    break;
-                case Stats.Defense:
-                    baseStat = baseDef;
-                    IV = defIV;
-                    EV = defEV;
-                    break;
-                case Stats.Special:
-                    baseStat = baseSpAtk; // In Gen 1 and 2, Special Attack and Special Defense share the same base stat
-                    IV = spAtkIV;        // In Gen 1 and 2, Special Attack and Special Defense share the same IV
-                    EV = spAtkEV;        // In Gen 1 and 2, Special Attack and Special Defense share the same EV
-                    break;
-                case Stats.Speed:
-                    baseStat = baseSpeed;
-                    IV = speedIV;
-                    EV = speedEV;
-                    break;
-                default:
-                    throw new ArgumentException("Invalid stat for Gen 1/2 calculation! Did you mean \\\"Special\\\"?");
-            }
-            return (int)(Math.Floor((((baseStat + IV) * 2 + Math.Floor(Math.Ceiling(Math.Sqrt(EV)) / 4)) * level) / 100) + 5);
-        }
-
-        // Abstract methods for calculating HP and other stats (Gen 3+)
+        // Methods for calculating HP and other stats (Gen 3+)
         public int CalculateHP()
         {
             return ((2 * baseHP + hpIV + (hpEV / 4)) * level / 100) + level + 10;

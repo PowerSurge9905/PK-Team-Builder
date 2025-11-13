@@ -34,5 +34,7 @@ namespace PK_Team_Builder
         // Generation 1
         public static readonly Moves Pound = new("Pound", Types.Normal, MoveCategories.Physical, 35, 40, 100, true);
         public static readonly Moves KarateChop = new("Karate Chop", Types.Fighting, MoveCategories.Physical, 25, 50, 100, true); // High critical hit ratio
+        public static readonly Moves DoubleSlap = new("Double Slap", Types.Normal, MoveCategories.Physical, 10, 15, 85, true); // Hits 2-5 times
+        public static readonly Moves CometPunch = new("Comet Punch", Types.Normal, MoveCategories.Physical, 15, 18, 85, true); // Hits 2-5 times
     }
 }
