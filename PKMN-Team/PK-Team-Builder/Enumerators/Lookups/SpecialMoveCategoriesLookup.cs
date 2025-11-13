@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PK_Team_Builder.Enumerators
+namespace PK_Team_Builder.Enumerators.Lookups
 {
-    internal class SpecialMoveCategories
+    internal class SpecialMoveCategoriesLookup
     {
         // Ball
         public readonly List<Moves> ballMoves = new List<Moves>
@@ -22,6 +22,17 @@ namespace PK_Team_Builder.Enumerators
 
         // Bomb
         public readonly List<Moves> bombMoves = new List<Moves>
+        {
+
+        };
+
+        // Dance, used for the Ability Dancer
+        public readonly List<Moves> danceMoves = new List<Moves>
+        {
+
+        };
+        // Healing, used for the Ability Triage
+        public readonly List<Moves> healingMoves = new List<Moves>
         {
 
         };
@@ -55,6 +66,12 @@ namespace PK_Team_Builder.Enumerators
         {
 
         };
+
+        // Slicing
+        public readonly List<Moves> slicingMoves = new List<Moves>
+        {
+
+        };
         
         // Sound
         public readonly List<Moves> soundMoves = new List<Moves>
@@ -64,6 +81,12 @@ namespace PK_Team_Builder.Enumerators
         
         // Spore
         public readonly List<Moves> sporeMoves = new List<Moves>
+        {
+
+        };
+
+        // Wind
+        public readonly List<Moves> windMoves = new List<Moves>
         {
 
         };
