@@ -8,7 +8,7 @@ namespace PK_Team_Builder.Enumerators.Lookups
 {
     internal class SpecialMoveCategoriesLookup
     {
-        // Ball
+        // Ball & Bomb
         public readonly List<Moves> ballMoves = new List<Moves>
         {
 
@@ -16,12 +16,6 @@ namespace PK_Team_Builder.Enumerators.Lookups
 
         // Bite
         public readonly List<Moves> biteMoves = new List<Moves>
-        {
-
-        };
-
-        // Bomb
-        public readonly List<Moves> bombMoves = new List<Moves>
         {
 
         };
@@ -43,6 +37,14 @@ namespace PK_Team_Builder.Enumerators.Lookups
             Moves.KarateChop,
         };
 
+        // Multi-Hit
+        public readonly Dictionary<Moves, int[]> multiHitMoves = new Dictionary<Moves, int[]>
+        {
+            // Move, min. hits, max. hits
+            {Moves.DoubleSlap, [2, 5] },
+            {Moves.CometPunch, [2, 5] },
+        };
+
         // Powder
         public readonly List<Moves> powderMoves = new List<Moves>
         {
@@ -58,7 +60,7 @@ namespace PK_Team_Builder.Enumerators.Lookups
         // Punch
         public readonly List<Moves> punchMoves = new List<Moves>
         {
-
+            Moves.CometPunch,
         };
         
         // Recoil
