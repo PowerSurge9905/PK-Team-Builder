@@ -1011,6 +1011,7 @@ namespace PK_Team_Builder.Enumerators
         Stakataka,
         Blacephalon,
         Zeraora,
+        ZeraoraMega,
         Meltan,
         Melmetal,
         // Generation 8
